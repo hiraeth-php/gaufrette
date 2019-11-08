@@ -1,0 +1,64 @@
+[volume]
+
+	;
+	; Whether or not the volume is disabled
+	;
+
+	disabled = FALSE
+
+	;
+	; The adapter class
+	;
+
+	class = Gaufrette\Adapter\Local
+
+	;
+	; Below is a list of options that will be translated to parameters for the above class's
+	; constructor -- `__construct()` -- .  Note the names need to match the parameter names.  If a
+	; parameter requires an object dependency you will need to make sure there's a delegate, alias,
+	; etc, for it to be resolved by the dependency injector.
+	;
+
+	[&.options]
+
+		;
+		; The base directory to be passed to Local::__construct(), can be app relative
+		;
+
+		directory = storage/public
+
+		;
+		; Whether or not to create the directory if it does not exist, pase to Local::__construct()
+		;
+
+		create = true
+
+		;
+		; The mode to be used with mkdir if the directory is to be created, passed to
+		; Local::__construct()
+		;
+
+		mode = 0777
+
+
+;	;
+;	; For remote volumes, you can enable local caching with the settings below.  Note, this
+;   ; doesn't make a lot of sense for local volumes, but, in theory should probably work.
+;	;
+;
+;	[&.caching]
+;
+;		;
+;		; The length of time for which the file should be cached
+;		;
+;
+;		ttl = 3600
+;
+;		;
+;		; The local cache path (this does not need to be under storage cache).  For example,
+;		; You might have user uploads get pushed to an S3 bucket and want to cache them in
+;		; storage/public in order to enable public access.  If left empty, the default path will
+;		; be `storage/cache/volumes/<name>`
+;		;
+;
+;		path = storage/cache/s3-mybucket
