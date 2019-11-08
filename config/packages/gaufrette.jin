@@ -30,7 +30,7 @@
 	;
 
 	providers = [
-		"Hiraeth\Gaufrette\BootProvider"
+		"Hiraeth\Gaufrette\ApplicationProvider"
 	]
 
 
