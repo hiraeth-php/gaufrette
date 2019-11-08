@@ -1,11 +1,10 @@
 <?php
 
-namespace Hiraeth\Sentry;
+namespace Hiraeth\Gaufrette;
 
 use Hiraeth;
 use Gaufrette\StreamWrapper;
 use Gaufrette\FilesystemMap;
-
 
 /**
  *
@@ -30,15 +29,15 @@ class BootProvider implements Hiraeth\Provider
 	 * Prepare the instance.
 	 *
 	 * @access public
-	 * @var object $instance The unprepared instance of the object
+	 * @var object $state The application shared state
 	 * @param Application $app The application instance for which the provider operates
 	 * @return object The prepared instance
 	 */
-	public function __invoke($instance, Hiraeth\Application $app): object
+	public function __invoke($state, Hiraeth\Application $app): object
 	{
 		StreamWrapper::setFilesystemMap($app->get(FilesystemMap::class));
-		StreamWrapper::register($app->getConfig('packages/gaufrette', 'scheme', 'vol'));
+		StreamWrapper::register($app->getConfig('packages/gaufrette', 'gaufrette.scheme', 'vol'));
 
-		return $instance;
+		return $state;
 	}
 }
