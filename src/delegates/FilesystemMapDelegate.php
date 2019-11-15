@@ -56,9 +56,9 @@ class FilesystemMapDelegate implements Hiraeth\Delegate
 
 			if ($app->getEnvironment('CACHING', TRUE) && !empty($config['caching']['ttl'])) {
 				$adapter = new Gaufrette\Adapter\Cache($adapter, new Gaufrette\Adapter\Local(
-					$app->getDirectory($config['caching']['path'] ?? static::CACHE_PATH . $name),
+					$config['caching']['path']   ?? $app->getDirectory(static::CACHE_PATH . $name),
 					$config['caching']['create'] ?? TRUE,
-					$config['caching']['mode'] ?? 0777
+					$config['caching']['mode']   ?? 0777
 				),  $config['caching']['ttl']);
 			}
 
