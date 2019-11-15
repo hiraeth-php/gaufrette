@@ -22,13 +22,14 @@
 	[&.options]
 
 		;
-		; The base directory to be passed to Local::__construct(), can be app relative
+		; The base directory to be passed to Local::__construct()
 		;
 
 		directory = dir(storage/public)
 
 		;
-		; Whether or not to create the directory if it does not exist, pase to Local::__construct()
+		; Whether or not to create the directory if it does not exist, passed to
+		; Local::__construct()
 		;
 
 		create = true
@@ -41,24 +42,23 @@
 		mode = 0777
 
 
-;	;
-;	; For remote volumes, you can enable local caching with the settings below.  Note, this
-;   ; doesn't make a lot of sense for local volumes, but, in theory should probably work.
-;	;
-;
-;	[&.caching]
-;
-;		;
-;		; The length of time for which the file should be cached
-;		;
-;
-;		ttl = 3600
-;
-;		;
-;		; The local cache path (this does not need to be under storage cache).  For example,
-;		; You might have user uploads get pushed to an S3 bucket and want to cache them in
-;		; storage/public in order to enable public access.  If left empty, the default path will
-;		; be `storage/cache/volumes/<name>`
-;		;
-;
-;		path = storage/cache/s3-mybucket
+	;
+	; For remote volumes, you can enable local caching with the settings below.  Note, this
+	; doesn't make a lot of sense for local volumes, but, in theory should probably work.
+	;
+
+	[&.caching]
+
+		;
+		; The length of time for which the file should be cached.  Set to non-zero to enable.
+		;
+
+		ttl = 0
+
+		;
+		; The local cache path.  This can increase the speed of accessing assets on remote volumes
+		; by storing a local copy.  Note, that `CACHING` must be set to `true` in the `.env`.  If
+		; left empty, the default path will be `storage/cache/volumes/<name>`
+		;
+
+		path = dir(storage/cache/s3-mybucket)
