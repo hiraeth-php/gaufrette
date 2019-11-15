@@ -4,6 +4,7 @@ namespace Hiraeth\Gaufrette;
 
 use Hiraeth;
 use Gaufrette;
+use League;
 
 /**
  * Delegates are responsible for constructing dependencies for the dependency injector.
@@ -20,11 +21,7 @@ class FilesystemMapDelegate implements Hiraeth\Delegate
 
 
 	/**
-	 * Get the class for which the delegate operates.
-	 *
-	 * @static
-	 * @access public
-	 * @return string The class for which the delegate operates
+	 * {@inheritDoc}
 	 */
 	public static function getClass(): string
 	{
@@ -33,11 +30,7 @@ class FilesystemMapDelegate implements Hiraeth\Delegate
 
 
 	/**
-	 * Get the instance of the class for which the delegate operates.
-	 *
-	 * @access public
-	 * @param Hiraeth\Application $app The application instance for which the delegate operates
-	 * @return object The instance of the class for which the delegate operates
+	 * {@inheritDoc}
 	 */
 	public function __invoke(Hiraeth\Application $app): object
 	{
@@ -53,12 +46,6 @@ class FilesystemMapDelegate implements Hiraeth\Delegate
 
 			foreach ($app->getConfig($path, 'volume.options', []) as $key => $value) {
 				$options[':' . $key] = $value;
-			}
-
-			switch($config['class']) {
-				case Gaufrette\Adapter\Local::class:
-					$options[':directory'] = $app->getDirectory($options[':directory']);
-					break;
 			}
 
 			$adapter = $app->get($config['class'], $options);

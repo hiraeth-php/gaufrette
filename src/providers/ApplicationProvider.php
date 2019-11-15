@@ -12,10 +12,7 @@ use Gaufrette\FilesystemMap;
 class ApplicationProvider implements Hiraeth\Provider
 {
 	/**
-	 * Get the interfaces for which the provider operates.
-	 *
-	 * @access public
-	 * @return array A list of interfaces for which the provider operates
+	 * {@inheritDoc}
 	 */
 	static public function getInterfaces(): array
 	{
@@ -26,12 +23,7 @@ class ApplicationProvider implements Hiraeth\Provider
 
 
 	/**
-	 * Prepare the instance.
-	 *
-	 * @access public
-	 * @var object $state The application shared state
-	 * @param Application $app The application instance for which the provider operates
-	 * @return object The prepared instance
+	 * {@inheritDoc}
 	 */
 	public function __invoke($state, Hiraeth\Application $app): object
 	{

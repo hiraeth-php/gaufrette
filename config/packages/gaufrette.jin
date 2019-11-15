@@ -42,3 +42,14 @@
 	;
 
 	scheme = vol
+
+[fastroute]
+
+	;
+	; Masks are simple find and replace strings for route generation.  Each key will be replaced
+	; with its corresponding value in a generated URL.
+	;
+
+	masks = {
+		"vol://public/": "/storage/"
+	}

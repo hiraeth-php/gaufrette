@@ -25,7 +25,7 @@
 		; The base directory to be passed to Local::__construct(), can be app relative
 		;
 
-		directory = storage/public
+		directory = dir(storage/public)
 
 		;
 		; Whether or not to create the directory if it does not exist, pase to Local::__construct()
